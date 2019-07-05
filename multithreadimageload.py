@@ -2,6 +2,7 @@ from threading import Thread
 import sys
 import torch
 import time
+import cv2
 from queue import Queue
 
 class multithreadimageload:
@@ -17,6 +18,7 @@ class multithreadimageload:
 		# initialize thread
 		self.thread = Thread(target=self.update, args=())
 		self.thread.daemon = True
+
 		
 	def start(self):
 		# start a thread to load tensors onto gpu from frames
@@ -58,19 +60,21 @@ class multithreadimageload:
 		# wait until stream resource are released
 		#self.thread.join()
 
-class multithreadpredict:
-	def __init__(self, frame, modelname, transforms=None, queue_size=25):
+class InferenceDataStream:
+	def __init__(self, fvs, transforms=None, queue_size=25):
 		# initialize the process
-		self.stream = modelname(frame)
+		self.stream = fvs
 		
 		self.stopped = False
-		self.transform = transforms
+		self.transfrom = transforms
 		
 		# Initialize the Queue
 		self.Q = Queue(maxsize=queue_size)
 		# initialize thread
 		self.thread = Thread(target=self.update, args=())
 		self.thread.daemon = True
+
+		self.tries=0
 		
 	def start(self):
 		# start a thread to load tensors onto gpu from frames
@@ -85,11 +89,14 @@ class multithreadpredict:
 			
 			if not self.Q.full():
 				#Load the next image from
-				frame = self.stream
+				img = self.stream.read()
+				img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+				frame = torch.tensor(img,dtype=torch.float16,device=torch.device('cuda:0')).permute(2,0,1)/255
+				#run predict
 				self.Q.put(frame) # adds frame to the queue
 				
 			else:
-				time.sleep(0.1) #rest for 10ms, we have a full queue
+				time.sleep(0.2) #rest for 10ms, we have a full queue
 		
 	def read(self):
 		# returns next frame to load in the queue
@@ -100,10 +107,12 @@ class multithreadpredict:
 		
 	def more(self):
 		#returns True if there are still frames to be loaded
-		while self.Q.qsize() == 0 and not self.stopped and tries < 5:
+		while self.Q.qsize() == 0 and not self.stopped and self.tries < 5:
 			time.sleep(0.1)
-			tries += 1
-			
+			self.tries += 1
+
+		self.tries=0
+	
 		return self.Q.qsize() > 0 
 		
 	def stop(self):
@@ -111,7 +120,7 @@ class multithreadpredict:
 		self.stopped = True
 		# wait until stream resource are released
 		#self.thread.join()
-	
+
 				
 	
 		
