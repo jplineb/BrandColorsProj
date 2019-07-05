@@ -13,7 +13,7 @@ from imutils.video import FPS
 import argparse
 import imutils
 
-from multithreadimageload import multithreadimageload
+from multithreadimageload import multithreadimageload, multithreadpredict
 
 import psutil
 
@@ -62,33 +62,29 @@ def normalize(img):
 
 
 
-def predict_one(img, frame_number):
-    #option 2
-    #rgb_image = torch.tensor(img,dtype=torch.float16,device=torch.device('cuda:0'))
-    alpha = multithreadimageload(img, queue_size = 25).start() # starts multithreadreadimageload
-    rgb_image = alpha.read() # grabs the next frame from the queue
-    #rgb_image = rgb_image.permute(2,0,1) #moved to multithread code
-    #rgb_image = rgb_image/255 # moved to multithread code
-    if frame_number%1 == 0 or frame_number <= 5:
-    	normed=normalize(rgb_image)
-    	normed=normed[None]
-    	global prediction_orig
-    	prediction_orig=model(normed)
-    	prediction =(rgb_image + .4*(2*prediction_orig-1)).clamp(0,1)
-    else:
-    	prediction =(rgb_image + .4*(2*prediction_orig-1)).clamp(0,1)
-    alpha.stop()
-    return prediction
+def predict_one(img, modelname):
+	#option 2
+	#rgb_image = torch.tensor(img,dtype=torch.float16,device=torch.device('cuda:0'))
+	alpha = multithreadimageload(img, queue_size = 25).start() # starts multithreadreadimageload
+	rgb_image = alpha.read() # grabs the next frame from the queue
+	#rgb_image = rgb_image.permute(2,0,1) #moved to multithread code
+	#rgb_image = rgb_image/255 # moved to multithread code
+	normed=normalize(rgb_image)
+	normed=normed[None]
+	beta = multithreadpredict(normed, modelname, queue_size=5).start()
+	prediction_orig = beta.read()
+	prediction =(rgb_image + .4*(2*prediction_orig-1)).clamp(0,1)
+	beta.stop()
+	alpha.stop()
+	return prediction
 
-# read in a video file and display corrected version "on the fly"
 def livevideocorrection(filepath, modelname):
 	fvs = FileVideoStream(filepath, queue_size=128).start()
-        # ivs = InferenceDataStream(fvs, queue_size=25).start() # --> inference video stream reads from file video stream and forms queue of prepped images for inference
 	desired_frames = 250
 	frame_number = 0
 	last_time = time.monotonic()
 	while fvs.more() and frame_number <= desired_frames:
-		frame = fvs.read() # --> frame = ivs.read()
+		frame = fvs.read()
 		if frame_number%10 == 0:
 			current_time = time.monotonic()
 			timedif = current_time - last_time
@@ -96,7 +92,7 @@ def livevideocorrection(filepath, modelname):
 			print('FPS:' + str(FPS))
 			last_time = time.monotonic()
 		frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-		prediction=(predict_one(frame, frame_number).squeeze().detach().cpu()) # --> prediction = predict_one(frame, frame_number) #why? because logic for preparing images is now done asyncronously in ivs.
+		prediction=(predict_one(frame, modelname).squeeze().detach().float().cpu())
 		prediction=prediction.permute(1, 2, 0).numpy()
 		prediction = cv2.cvtColor(prediction, cv2.COLOR_BGR2RGB)
 		
@@ -106,14 +102,17 @@ def livevideocorrection(filepath, modelname):
 		cv2.imshow('preview', prediction)
 		frame_number += 1
 		cv2.waitKey(1)
+			
 	
 	cv2.destroyAllWindows()
 	fvs.stop()
 
+
+
 model= torch.load('../Models/ColorResNet_0_1.pt')
 model.eval()
 
-video='FB-112418-USCClemson-Clip3_360p.mp4'
+video='clip2'
 #livevideocorrection(video, model)
 
 lp = LineProfiler()
