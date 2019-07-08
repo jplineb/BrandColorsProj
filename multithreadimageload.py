@@ -16,13 +16,39 @@ class ColorCorrector:
 		self.model=model
 		self.intensity=intensity
 	 
-	def predict(self, rgb_image, frame_number):
+	def predict(self, rgb_image, frame_number, video_height, video_width, demo_mode = True, res_override = None):
+		if frame_number == 0 or res_override is not None:
+			if res_override is not None:
+				self.x1 = 0
+				self.x2 = res_override[0]//2
+				self.y1 = 0
+				self.y2 = res_override[1]//2
+			else:
+				self.x1 = 0
+				self.x2 = video_width//2
+				self.y1 = 0
+				self.y2 = video_height//2
+			#outdated
+			#else:
+				#imgsize = rgb_image.size()
+				#self.x1 = 0
+				#self.x2 = imgsize[2]//2
+				#self.y1 = 0
+				#self.y2 = imgsize[1]//2
+			
+	
 
 		if frame_number%1 == 0 or frame_number <= 5:
 			img_normed = ColorCorrector._normalize(rgb_image)[None]
 			self.prediction_orig = self.model(img_normed)
 
+		
 		prediction =rgb_image + self.intensity*2.0*self.prediction_orig-self.intensity
+		
+		if demo_mode:
+			uncorrected = rgb_image.unsqueeze(0) # Generates the uncorrected section
+			prediction[:,:,:,self.x1:self.x2] = uncorrected[:,:,:,self.x1:self.x2] # Adds uncorrected section back onto the corrected mask
+		
 
 		return prediction.clamp(0,1)
 		
