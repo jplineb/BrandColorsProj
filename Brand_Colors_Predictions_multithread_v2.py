@@ -34,6 +34,14 @@ args = parser.parse_args()
 model= torch.load('../Models/ColorResNet_0_1_3.pt').eval()
 #video='FB-112418-USCClemson-Clip3_360p.mp4'
 video = 'clip2'
+##
+## Get video clip resoultion information
+vid = cv2.VideoCapture(video)
+height = int(vid.get(cv2.CAP_PROP_FRAME_HEIGHT))
+print('height is', height)
+width = int(vid.get(cv2.CAP_PROP_FRAME_WIDTH))
+vid.release()
+
 
 
 ##
@@ -49,15 +57,18 @@ cc = ColorCorrector(model, intensity=float(args.intensity))
 ## The function for looping over the video
 def livevideocorrection():
 
-	desired_frames = 2000
-	frame_number = 0
+	desired_frames = 300
+	frame_number = 0 #if not zero, specify res_override
 	last_time = time.monotonic()
 	#cv2.namedWindow('preview', cv2.WINDOW_NORMAL) # creates cv2 window entity called 'preview'
 	#cv2.resizeWindow('preview', (1920, 1080)) # resizes cv2 window entitiy called 'preview'
 	while ivs.more() and frame_number <= desired_frames:
 		
 		# get corrected image
-		prediction = cc.predict(ivs.read(), frame_number)
+		prediction = cc.predict(ivs.read(), frame_number, height, width, demo_mode = True)
+		
+		
+		
 
 		# postprocess the image for display
 		prediction = prediction.float()
@@ -80,7 +91,8 @@ def livevideocorrection():
 		# update the display
 		cv2.putText(prediction, "Queue Size (FVS/IVS): {}/{}".format(fvs.Q.qsize(), ivs.Q.qsize()),
 			(10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
-		cv2.putText(prediction, ('FPS: ' + str(FPS)),(750, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2) 
+		cv2.putText(prediction, ('FPS: ' + str(FPS)),(750, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+		cv2.line(prediction, (width//2 ,0), (width//2, height), (0,255,0), 3) 
 		cv2.imshow('preview', prediction)
 		cv2.waitKey(1)
 		
