@@ -26,17 +26,16 @@ class ColorCorrector:
 		
 	 
 	def predict(self, rgb_image, frame_number, video_height, video_width, demo_mode = False, res_override = None):
-		if frame_number == 0 or res_override is not None:
-			if res_override is not None:
-				self.x1 = 0
-				self.x2 = res_override[0]//2
-				self.y1 = 0
-				self.y2 = res_override[1]//2
-			else:
-				self.x1 = 0
-				self.x2 = video_width//2
-				self.y1 = 0
-				self.y2 = video_height//2
+		if res_override is not None:
+			self.x1 = 0
+			self.x2 = res_override[0]//2
+			self.y1 = 0
+			self.y2 = res_override[1]//2
+		else:
+			self.x1 = 0
+			self.x2 = video_width//2
+			self.y1 = 0
+			self.y2 = video_height//2
 			#outdated
 			#else:
 				#imgsize = rgb_image.size()
@@ -45,7 +44,7 @@ class ColorCorrector:
 				#self.y1 = 0
 				#self.y2 = imgsize[1]//2
 			
-	
+
 
 		if frame_number%1 == 0 or frame_number <= 5:
 			img_normed = self._normalize(rgb_image)[None]
