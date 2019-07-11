@@ -101,6 +101,7 @@ class InferenceDataStream:
 				img = self.stream.read()
 				# change colors
 				img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+				
 				# format tensor type
 				cpu = self.cpu
 				if cpu:
@@ -136,8 +137,123 @@ class InferenceDataStream:
 		# wait until stream resource are released
 		#self.thread.join()
 		
+#################################################################		
+class WebcamVideoStream:
+	def __init__(self, src=0, name="WebcamVideoStream"):
+		# initialize the video camera stream and read the first frame
+		# from the stream
+		self.stream = cv2.VideoCapture(src)
+		self.stream.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+		self.stream.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+		(self.grabbed, self.frame) = self.stream.read()
 
+		# initialize the thread name
+		self.name = name
+
+		# initialize the variable used to indicate if the thread should
+		# be stopped
+		self.stopped = False
+
+	def start(self):
+		# start the thread to read frames from the video stream
+		t = Thread(target=self.update, name=self.name, args=())
+		t.daemon = True
+		t.start()
+		return self
+
+	def update(self):
+		# keep looping infinitely until the thread is stopped
+		while True:
+			# if the thread indicator variable is set, stop the thread
+			if self.stopped:
+				return
+
+			# otherwise, read the next frame from the stream
+			(self.grabbed, self.frame) = self.stream.read()
+
+	def read(self):
+		# return the frame most recently read
+		return self.frame
+
+	def stop(self):
+		# indicate that the thread should be stopped
+		self.stopped = True		
+
+###############################################################
+class InferenceDataStreamRT:
+	
+	def __init__(self, fvs, transforms=None, queue_size=25, cpu=False):
 		
+		# initialize the process
+		self.stream = fvs
+		self.stopped = False
+		self.transfrom = transforms
+		self.cpu = cpu
+		# Initialize the Queue
+		self.Q = Queue(maxsize=queue_size)
+		# initialize thread
+		self.thread = Thread(target=self.update, args=())
+		self.thread.daemon = True
+
+		self.tries=0
+		
+	def start(self):
+		# start a thread to load tensors onto gpu from frames
+		self.thread.start()
+		return self
+		
+	def update(self):
+		#keep looping infinitely
+		while True:
+			# keep track of the number of frames
+			
+			if self.stopped:
+				break
+			
+			# if Q is not full read another into it
+			if not self.Q.full():
+				# read from file stream
+				img = self.stream.read()
+				# change colors
+				imgS = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+				# format tensor type
+				norm_img = imgS.copy()
+				norm_img = norm_img.transpose([2, 0, 1])/255
+				norm_img[0]=(norm_img[0]-.485)/.229
+				norm_img[1]=(norm_img[1]-.456)/.224
+				norm_img[2]=(norm_img[2]-.406)/.225
+				
+				
+			
+
+				self.Q.put([norm_img, img]) # adds frame to the queue
+				
+			else:
+				time.sleep(0.2) #rest for 10ms, we have a full queue
+		
+	def read(self):
+		# returns next frame to load in the queue
+		return self.Q.get()
+		
+	def running(self):
+		return self.more() or not self.stopped
+		
+	def more(self):
+		#returns True if there are still frames to be loaded
+		while self.Q.qsize() == 0 and not self.stopped and self.tries < 5:
+			time.sleep(0.1)
+			self.tries += 1
+
+		self.tries=0
+	
+		return self.Q.qsize() > 0 
+		
+	def stop(self):
+		# inidcate that the thread should be stopped
+		self.stopped = True
+		# wait until stream resource are released
+		#self.thread.join()
+	
 
 """
 class multithreadimageload:
