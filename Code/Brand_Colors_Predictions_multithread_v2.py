@@ -62,12 +62,13 @@ cc = ColorCorrector(model, intensity=float(args.intensity), cpu=args.cpu)
 ## The function for looping over the video
 def livevideocorrection():
 
-	desired_frames = 300
-	frame_number = 0 # if not zero, specify res_override
+	desired_frames = 2000
+	frame_number = 1000 # if not zero, specify res_override
+	total_frames = desired_frames + frame_number
 	last_time = time.monotonic()
 	#cv2.namedWindow('preview', cv2.WINDOW_NORMAL) # creates cv2 window entity called 'preview'
 	#cv2.resizeWindow('preview', (1920, 1080)) # resizes cv2 window entitiy called 'preview'
-	while ivs.more() and frame_number <= desired_frames:
+	while ivs.more() and frame_number <= total_frames:
 		
 		# get corrected image
 		prediction = cc.predict(ivs.read(), frame_number, height, width, demo_mode = args.demo)
