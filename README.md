@@ -14,6 +14,7 @@ A compiled ONNX model - only necessary if running TensorRT example
 Super User Permissions
 A dedicated GPU (Recommended > 4GB of VRAM)
 x64 or ARM64 processor
+Webcam
 ```
 
 Libraries and packages you'll need that you probably don't already have installed:
