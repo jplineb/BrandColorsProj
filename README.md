@@ -43,10 +43,10 @@ The code can be broken down into four separate sections with all containing depe
    * Brand_Colors_Predictions_TensorRT.py
 
 3. Brand_Colors_Predictions_webcam - used to take live webcam feed and color correct it in real time
-	* Brand_Colors_Predictions_webcam.py
+   * Brand_Colors_Predictions_webcam.py
 
 4. Multithreadimageload - contains the class definitions for the project
-	*Multithreadimageload.py
+   * Multithreadimageload.py
 
 
 ### Brand_Colors_Predictions
