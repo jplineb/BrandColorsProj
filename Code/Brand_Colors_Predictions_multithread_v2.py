@@ -1,7 +1,7 @@
 import torch
 import torchvision.transforms as transforms
 from colorstuff.colorstuff import ColorResNet
-from PIL import Image
+from ColorNet import ColorNet
 import numpy as np
 import cv2
 from line_profiler import LineProfiler
@@ -29,6 +29,7 @@ parser.add_argument("--cpu", "-c", help="Places the model on the cpu; runs calcu
 # read arguments from the command line
 args = parser.parse_args()
 
+torch.backends.cudnn.enabled == True
 
 ##
 ## Load the pytorch model and set video clip
@@ -37,8 +38,11 @@ if args.cpu:
 else:
 	model = torch.load('../Models/ColorResNet_0_1_3.pt').eval()
 	
+
 #video='FB-112418-USCClemson-Clip3_360p.mp4'
-video = 'clip2'
+#video = 'clip2'
+video = 'Clip_2_trim.mp4'
+
 ##
 ## Get video clip resoultion information
 vid = cv2.VideoCapture(video)
@@ -62,8 +66,8 @@ cc = ColorCorrector(model, intensity=float(args.intensity), cpu=args.cpu)
 ## The function for looping over the video
 def livevideocorrection():
 
-	desired_frames = 2000
-	frame_number = 1000 # if not zero, specify res_override
+	desired_frames = 100
+	frame_number = 0 # if not zero, specify res_override
 	total_frames = desired_frames + frame_number
 	last_time = time.monotonic()
 	#cv2.namedWindow('preview', cv2.WINDOW_NORMAL) # creates cv2 window entity called 'preview'
@@ -81,10 +85,11 @@ def livevideocorrection():
 		prediction = prediction.float()
 		prediction = prediction.squeeze()
 		prediction = prediction.detach()
+		prediction = prediction[[2,1,0],:,:]
 		prediction = prediction.permute(1, 2, 0)
 		prediction = prediction.cpu()
 		prediction = prediction.numpy()
-		prediction = cv2.cvtColor(prediction, cv2.COLOR_BGR2RGB)
+		#prediction = cv2.cvtColor(prediction, cv2.COLOR_BGR2RGB)
 
 		# print fps every ten frames
 		if frame_number%10 == 0:

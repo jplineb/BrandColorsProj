@@ -39,8 +39,8 @@ else:
 	
 ##
 ## Get video clip resoultion information
-height = 720
-width = 1280
+height = 360
+width = 640
 
 
 
@@ -59,8 +59,8 @@ cc = ColorCorrector(model, intensity=float(args.intensity), cpu=args.cpu)
 def livevideocorrection():
 	last_time = time.monotonic()
 	frame_number = 0
-	#cv2.namedWindow('preview', cv2.WINDOW_NORMAL) # creates cv2 window entity called 'preview'
-	#cv2.resizeWindow('preview', (1920, 1080)) # resizes cv2 window entitiy called 'preview'
+	cv2.namedWindow('preview', cv2.WINDOW_NORMAL) # creates cv2 window entity called 'preview'
+	cv2.resizeWindow('preview', (1280, 720)) # resizes cv2 window entitiy called 'preview'
 	while ivs.more():
 		
 		# get corrected image
@@ -71,10 +71,10 @@ def livevideocorrection():
 		prediction = prediction.float()
 		prediction = prediction.squeeze()
 		prediction = prediction.detach()
+		prediction = prediction[[2,1,0],:,:]
 		prediction = prediction.permute(1, 2, 0)
 		prediction = prediction.cpu()
 		prediction = prediction.numpy()
-		prediction = cv2.cvtColor(prediction, cv2.COLOR_BGR2RGB)
 
 		# print fps every ten frames
 		if frame_number%10 == 0:
@@ -86,8 +86,7 @@ def livevideocorrection():
 		frame_number += 1
 
 		# update the display
-		#cv2.putText(prediction, "Queue Size IVS: {}/{}".format(ivs.Q.qsize(),(10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
-		cv2.putText(prediction, ('FPS: ' + str(int(FPS))),(width-300, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+		cv2.putText(prediction, ('FPS: ' + str(int(FPS))),(height-30, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
 		
 		if args.demo:
 			cv2.line(prediction, (width//2 ,0), (width//2, height), (255,255,255), 2)

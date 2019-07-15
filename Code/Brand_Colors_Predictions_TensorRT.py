@@ -45,8 +45,9 @@ def allocate_buffers(engine):
 def build_engine_onnx(model_file):
 	with trt.Builder(TRT_LOGGER) as builder, builder.create_network() as network, trt.OnnxParser(network, TRT_LOGGER) as parser:
 	    builder.max_workspace_size = 1 << 30
-	    builder.max_batch_size = 5
-	    builder.fp16_mode = True
+	    #builder.max_batch_size = 5
+	    builder.fp16_mode = True 
+	    #builder.int8_mode = True --> int8 not supported on hardware
 	    
 	    
 	    # Load the Onnx model and parse it in order to populate the TensorRT network.
@@ -110,11 +111,11 @@ def InferStuff(filestream, h_input, d_input, h_output, d_output, stream, context
 	#print(h_output) # output from inference
 	# Postprocess the image for display
 	outputimg = (h_output.reshape([3,720,1280])).astype('float32')
-	
 
-	outputimg = test_image[1]/255 + 1.5*(2*outputimg.transpose(1,2,0)-1)
+
+	outputimg = test_image[1]/255 + .4*(2*outputimg.transpose(1,2,0)-1)
+	#outputimg = cv2.cvtColor(outputimg, cv2.COLOR_BGR2RGB) #--> Currently breaks code
 	#print(outputimg.shape)
-	#outputimg = cv2.cvtColor(outputimg, cv2.COLOR_BGR2RGB)
 	# update display
 	cv2.imshow('preview', outputimg)
 	cv2.waitKey(1)
@@ -153,10 +154,10 @@ def livevideocorrection():
 
 if __name__=='__main__':
 		lp = LineProfiler()
-		#lp.add_function(InferStuff)
-		#lp.add_function(load_normalized_test_case)
-		#lp.add_function(normalize_image)
-		#lp.add_function(do_inference)
+		lp.add_function(InferStuff)
+		lp.add_function(load_normalized_test_case)
+		lp.add_function(normalize_image)
+		lp.add_function(do_inference)
 		lp_wrapper = lp(livevideocorrection)
 		lp_wrapper()
 		lp.print_stats()
