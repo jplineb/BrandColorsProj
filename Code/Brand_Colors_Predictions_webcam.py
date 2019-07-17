@@ -47,7 +47,7 @@ width = 640
 
 ##
 ## create the video and inference streams 
-fvs = WebcamVideoStream().start()
+fvs = WebcamVideoStream(1).start()
 ivs = InferenceDataStream(fvs, model, queue_size=20, cpu=args.cpu).start()
 
 ##
@@ -114,9 +114,6 @@ if __name__=='__main__':
 		lp.print_stats()
 	else:
 		livevideocorrection()
-	
-
-	print('memory % used: '+ str(psutil.virtual_memory()[2]))
 
 
 

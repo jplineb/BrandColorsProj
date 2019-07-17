@@ -41,7 +41,9 @@ else:
 
 #video='FB-112418-USCClemson-Clip3_360p.mp4'
 #video = 'clip2'
-video = 'Clip_2_trim.mp4'
+#video = 'Clip_2_trim.mp4'
+#video = 'syracusetest.mp4'
+video = 'Demo_Clip_576p_30.mp4'
 
 ##
 ## Get video clip resoultion information
@@ -49,6 +51,7 @@ vid = cv2.VideoCapture(video)
 height = int(vid.get(cv2.CAP_PROP_FRAME_HEIGHT))
 print('height is', height)
 width = int(vid.get(cv2.CAP_PROP_FRAME_WIDTH))
+print('width is', width)
 vid.release()
 
 
@@ -66,7 +69,7 @@ cc = ColorCorrector(model, intensity=float(args.intensity), cpu=args.cpu)
 ## The function for looping over the video
 def livevideocorrection():
 
-	desired_frames = 100
+	desired_frames = 1000
 	frame_number = 0 # if not zero, specify res_override
 	total_frames = desired_frames + frame_number
 	last_time = time.monotonic()
@@ -75,14 +78,15 @@ def livevideocorrection():
 	while ivs.more() and frame_number <= total_frames:
 		
 		# get corrected image
-		prediction = cc.predict(ivs.read(), frame_number, height, width, demo_mode = args.demo)
+		prediction = (cc.predict(ivs.read(), frame_number, height, width, demo_mode = args.demo)*255).type(torch.uint8)
 		
 		
 		
 
 		# postprocess the image for display
 		torch.cuda.synchronize()
-		prediction = prediction.float()
+		#rediction = prediction.float()
+		#prediction = torch.nn.functional.interpolate(prediction, (1080, 1920), mode = 'area')
 		prediction = prediction.squeeze()
 		prediction = prediction.detach()
 		prediction = prediction[[2,1,0],:,:]
@@ -103,13 +107,13 @@ def livevideocorrection():
 		# update the display
 		cv2.putText(prediction, "Queue Size (FVS/IVS): {}/{}".format(fvs.Q.qsize(), ivs.Q.qsize()),
 			(10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
-		cv2.putText(prediction, ('FPS: ' + str(FPS)),(750, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+		cv2.putText(prediction, ('FPS: ' + str(FPS)),(width//2+20, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
 		
 		if args.demo:
 			cv2.line(prediction, (width//2 ,0), (width//2, height), (255,255,255), 2)
 			cv2.putText(prediction, ('Broadcasted'), ((width//2)-200, height-50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
 			cv2.putText(prediction, ('Corrected'),((width//2+10),height-50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2)
-			
+		
 		cv2.imshow('preview', prediction)
 		cv2.waitKey(1)
 		
