@@ -12,9 +12,10 @@ class ColorCorrector:
 	#norm_mu = torch.tensor([0.485, 0.456, 0.406], dtype=torch.float16,device=torch.device('cuda:0')).reshape(3,1,1)
 	#norm_sd = torch.tensor([0.229, 0.224, 0.225], dtype=torch.float16,device=torch.device('cuda:0')).reshape(3,1,1)
 	
-	def __init__(self, model, intensity=0.4, cpu=False):
+	def __init__(self, model, intensity=0.4, cpu=False, res_override = None):
 		self.model=model
 		self.intensity=intensity
+		self.res_override = res_override
 		# class members
 		
 		if cpu:
@@ -25,12 +26,14 @@ class ColorCorrector:
 			self.norm_sd = torch.tensor([0.229, 0.224, 0.225], dtype=torch.float16,device=torch.device('cuda:0')).reshape(3,1,1)
 		
 	 
-	def predict(self, rgb_image, frame_number, video_height, video_width, demo_mode = False, res_override = None):
-		if res_override is not None:
+	def predict(self, rgb_image, frame_number, video_height, video_width, demo_mode = False):
+		if self.res_override is not None:
 			self.x1 = 0
-			self.x2 = res_override[0]//2
-			self.y1 = 0
-			self.y2 = res_override[1]//2
+			self.x2 = self.res_override
+			#self.x2 = res_override[0]//2
+			#self.y1 = 0
+			#self.y2 = res_override[1]//2
+			
 		else:
 			self.x1 = 0
 			self.x2 = video_width//2
@@ -100,7 +103,7 @@ class InferenceDataStream:
 				# read from file stream
 				img = self.stream.read()
 				# change colors
-				img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+				#img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 				
 				# format tensor type
 				cpu = self.cpu
@@ -108,6 +111,8 @@ class InferenceDataStream:
 					frame = torch.tensor(img,dtype=torch.float32).permute(2,0,1)/255
 				else:
 					frame = torch.tensor(img,dtype=torch.float16,device=torch.device('cuda:0')).permute(2,0,1)/255
+					frame = frame[[2,1,0],:,:]
+
 
 				self.Q.put(frame) # adds frame to the queue
 				
@@ -143,8 +148,8 @@ class WebcamVideoStream:
 		# initialize the video camera stream and read the first frame
 		# from the stream
 		self.stream = cv2.VideoCapture(src)
-		self.stream.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
-		self.stream.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+		self.stream.set(cv2.CAP_PROP_FRAME_WIDTH, 620)
+		self.stream.set(cv2.CAP_PROP_FRAME_HEIGHT, 360)
 		(self.grabbed, self.frame) = self.stream.read()
 
 		# initialize the thread name
