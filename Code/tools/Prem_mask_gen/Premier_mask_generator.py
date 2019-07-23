@@ -11,7 +11,6 @@ Created on Tue Jul 23 15:19:53 2019
 ## The output of this script will be filename_Difference.jpg
 
 import cv2
-import numpy as np
 import os
 
 listofimgs = os.listdir('./Data/')
@@ -35,4 +34,4 @@ for x in wanted_photos:
     cv2.imshow('preview',diff)
     cv2.waitKey(0)
     cv2.destroyAllWindows
-    cv2.imwrite(('./Data/'+ x + '_Difference.png'), diff*255)
+    cv2.imwrite(('./Data/'+ x + '_Difference.jpg'), diff*255)
