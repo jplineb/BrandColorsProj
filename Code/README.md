@@ -80,3 +80,52 @@ The following should appear:
 
 ![enter image description here](https://lh3.googleusercontent.com/eD2sYX5qMRzeLHN1iXKqYeEm3pgBWYn46SPJjqQ0wO5LlMHtolykrBGkaQD7QHhV1Fv_kqOnEfoPx_1Lb-s1XYTC_1VsczRbPCuzdUsYe3e1ue4I_QvSmxuVK5Ip1qQY7dFXVtEuh42If6QQl09cZgMZZc4llTvYwZ8eWMCrqybvxXBFTE8ZsHfpNPQUvkvz37Lpr-R7kXYhnc-NDYQxamF83Ez-BM1M4lejSyP2ntFIZc07FUM1jiU9dPxSLbsT-wYAyun4L3nKwV2UL00-ThPMIKDAnXxj9t-H2QbDZhJYHL7W_DmVmegGkbvOM6kjFw3acKWFbPgJfkNVpPPro5GrZRYwzvrqHzJo68VYsCz_k40d-xZYXbUcliDX6slHw4FYxmHJuW4k_EjwVyA3SBzRuHbXF7gKE7rZ12USh0ZJ4tAyJvJkzfIBjxcqTnHDSnVxSM5agYhCxbvvGBQUzfJkl0BTX-MSNrKc9ThCmgYgSaFn-siIn4taDTWM7KH3xXRQ2X_hrYGygTa5G1pE6w_gwJNjSM47xy0bR7rZtojRv6SvJ9tnvL5Tq5NIWSATz60M5earbzgkRdNSBUq2tk_7L5Hs1nn4ZL3SZdCGoIo70OC1wH3tyXXceIYsNenpwzFMK3XFm49lZDJrIp4zKS7OHZasPfQ=w1462-h916-no)
 *If this did not work type **exit** into the Terminal and press **Enter**. Then, open a new Terminal Window and try again.*
+
+## Running Different Demos
+Now that you have navigated to the correct directory in the Terminal, running the Python scripts is easy. The code folder contains three Python scripts to be used for different demos:
+* Normal Predictions Demo (Best FPS)
+* GUI Demo with sliders
+* Webcam Demo
+
+Each of these demos has arguments you can pass with them to modify the demo:
+ 
+ 
+``--demo or -d : used to run the demo with the broadcasted vs corrected``
+``--profile or -p : Runs line profiler``
+``--intensity or -i  : Scale factor for the correction mask``
+``--cpu or -c : Runs the demo in cpu mode``
+``--help or -h : provides the information above``
+
+***Note***: You will most likely use --demo when showing the demo off as it provides the side by side comparison in the output window
+
+If you haven't done so already, place your footage in the **BrandColorsProj/Code/** directory.  fallac deo if your ootage does not or i emolpp.m 
+
+### Normal Predictions Demo
+The Normal Predictions Demo is the fastest of demos when it comes to frame rate as it is only rendering the video and the demo overlay. However, it is not as smooth as the gui demo due to data being exchange between the onboard RAM and the swap file on the USB SSD.  You will notices a slight hang when this occurs. This is solely a limitation of the hardware.
+
+To run the demo follow the steps below:
+
+In the Terminal, with the Code directory selected, use the following code to run the Normal Predictions Demo:
+
+    sudo python3 Predictions_Test.py -d
+***Note*** : the -d argument will show the broadcasted image on the left side and the corrected image on the right
+
+When the code starts you will get a file selection box like shown below. Here you can select the footage that you want the demo to run on:
+
+![enter image description here](https://lh3.googleusercontent.com/vA-dzJuEdoOaWv4N2Iuqm1yEjBXtXTd_KizNPFsmy-AGpjaLhLIMaWroi2LcwK-RkObMKcLNBGpLFtg1cKFsh51eszQbGtJr1B3Ndj0vo956EwNaNf1OF-2OEmldXTt2t_SZvuTfsHkcdtYIBj3fAvshKVfQxUAVgZ_j2aiSEIt_YmxioXxVxu-VnY7lQ8_oiZuDeJ29cohrXRqUzRaY4N552PGTpXuweXuS8NyBoWhTa0t6gtbGxF0ZLCkm76FQMZ8ItgB1JCaV8IxbQlbIO2rMUjA03avXHBwC87niQVugzoyaaMM_UFgUyiD20Gj8X56WW88zhWY52b-r1_6pfYbDZnsf6t61cuZhTLK96gQM-z-fQTLo_FqFMImzTExJhx1nRUB53pz_k9ztlQN2rSZyorr5MHYv9mMa9v3WOJevmBLqVahZEdFUnzZYTrbPnaRQge5b29l6Ryp_1X1GbZJuCURcHjF4YYG1VJjE8ewdsKjt1_HB674JJTylx8i4NoajyoLTQc0tVT7HGYsheaFMZOihUw9k-dYGOH4UQ_HzJIqB7JGSJ4ouLsAhIBDgyQfWUJCR8f1jFpdpxqkT0y1bLqWsuftKZ1oKJtHdOSESk2GUlmwxdbcX429Hw4Z6_54Y-Uq7OCsLMnGdJTXMP0hBwfYp-Bs=w478-h220-no)
+
+
+Once you have selected the footage, OpenCV will run a test capture to and output the resolution into the Terminal like shown below:
+
+![enter image description here](https://lh3.googleusercontent.com/J8qlK0OIOSLb6PMq2_l80ULd-0H6TGBbdUzqNOwsmn02XplqOLNnzNAL8k75yZo9iRjJqMT8-eBLRP1jmg9iB9s78QGZYzDCqScYsDl3A8wvHWbx0aP6XxQONc1gwM7s1pPWpMtjHUBc3RBr3E-skndaSrmqfkMzfBV3jtCVqUjurwLnUUCEZbEbZ7wIc8hvHSsRmXZyAb03ePTWFe6SWgZDKVNJTOXzKQEf8MIgix1v2Hb3qgrK1iq7xfip1ljht_3ZLarLsi7BngQkDFcNu0m53X1AwrXrtOwx5eg5_aVbsKlXmrpPXP6CweQFwn-NoNgE0_QTuXo6j8lZaxoCUk0MHyDzdyvxXwmImd7aFWEmEOcml8cDXh-XHY_MDBmfuoEcHM0jCFftd7U68HC7TaabcqjulDJKriyK9djG1rAprSocuAZ27KJwviPT0dQGY3kMgLTYDnqYBoMqc7gSY3zaw5qgpkjgdbZGRupn9JKAQWG1OFDoRmQsPQ7W3kXX3qMhzQGhRZXI5O4uHD2TRU8emQADmGEjArr3pCE4hAaoujUo0_DnmTe7eP5WAD7HJ5Es3Aj70Jr5BNdlMVhB34KiRnQv_A3VYntiogb3funA76ZjlyzKjNt18G4Qu5-O9M-Y_inm9R87caG3TTYINfrmtNGLohU=w1826-h142-no)
+
+
+***Note***: If the resolution outputed by the Terminal is not correct, press **Ctrl + C** until the demo has stopped and try again
+
+The model will then be loaded on to the GPU and inference will begin. This may take 15-30 seconds to start. If you see an error such as:
+
+    Failed to load module "canberra-gtk-module"
+Do not panic, this is a bug with one of the python libraries we are using.
+
+When the demo starts you will now see the footage you selected earlier with its original and corrected frames side by side with the FPS located in the top right corner.
+
