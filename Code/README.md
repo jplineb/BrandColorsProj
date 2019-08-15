@@ -23,7 +23,7 @@ To power on the Nano just plug in the powersupply to an wall outlet and it will 
 
 Once the Nano is running, a desktop will be shown like below:
 
-![Jetson Nano Desktop](../Documentation/photos/Screenshot from 2019-08-12 15-11-25.png?raw=True "Title")
+![Jetson Nano Desktop](https://github.com/jplineb/ColorbrandsProj/blob/master/Documentation/photos/Screenshot%20from%202019-08-12%2015-11-25.png?raw=true)
 
 From this, we can accesses the basic computer necessities. 
 
