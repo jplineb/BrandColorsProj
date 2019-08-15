@@ -29,11 +29,11 @@ From this, we can accesses the basic computer necessities.
 
 In the case of where the desktop icons are too small, select the **gear icon** in the top right of the screen and select **system settings**. The window shown below should appear:
 
-![enter image description here](https://lh3.googleusercontent.com/TPAOPD9-yZ-60MEYPLvQnW5_HBA7SQT8bsiGnpnWGS1whFA1PlzWE8fSHl3e8v_KuKQf9mVoefElnO5k-d1XrCZf5GmcRwREUEXKYW4mdTbtpXSAdPFqM5ys4aYFCcQt3XD92AB4KIvu24lYoi4XBgRr-gwrYt15fYqjqUiGJQ1OMOusUrzOqpIaHEAnM5jT4AaK2XPTHQ6buQVc_JebKAf06P2OI0oBuErzP_Pa49nxoLy-eP1dnG4gbYTa6cGEQ2HuiANunHIXD_UDD62K501I83kItP_lUaE_IgwnoCKj-14yJw8-jV9U6HSYAbY7Xj2KrLDG_UTgcg69NZDutF1knKPNLOHZ-1yKsjcnub-GTMomVW89ox2gSjO_BGp1J91RCDTB8ml_lOW2VtBPKQwX9KOBM5D02zSoj8tAJHt20VuyV3H1MII1zvYp0PBwUICQ-kfWA158FFYDvcDsl_i15_XRPCTPvewyz64LpDEfX_Jw6PEmEWri_GS94fIne02vRDD_JQi2CwcvW6KoPRosGqpnURo1OmjEAoOtsfwqI3quUBkYJIE83qgkxhX-bdOhWudIZns9LkJj6Px-bfL0tenUPhi0HWxEdNx0juLpQcDkJiLHkObqX1RxAx_jdvJcb6rzJBgh-s3jXrWF-5JeWvONpNs=w1688-h1168-no)
+![settings](https://github.com/jplineb/ColorbrandsProj/blob/master/Documentation/photos/Screenshot%20from%202019-08-12%2015-21-11.png?raw=true)
 
 From here select **Displays** under the Hardware section and change the **Scale for menu and title bars** slider until satisfied and click **apply**
 
-![enter image description here](https://lh3.googleusercontent.com/H2MvPaSh0-P55H9TeRjQOrc1L52jUIG778sobLRKcyPqgaAhwTTlBeDds9p0Cx4qGFVa_n4NqqnPlEwHQ_Ir5FFcBORak9qV5u8dilaXwojwD5H5GSVLEACcyPDZwaojC2x5M4ck0lV9e1kDmDq_ewUEnjpsmNznQz4FsoAVEdTGtwAI5KDplulzK8T69KDgaW9HuAzj4FyJUHQNaG3R90TOakDRrABgtcOstr67ab4T9aUSY6VGwdKxJf-4ReDHNJB1EmMNNfhZXzvqlDxIKmoZ-uI08yRrsaPBTdRe9ym0dfcsWYFJHNpc0vpub1lBDtSUrjkcThdBSGAltmX-IG_z06olJneW4vsGWJoYbPs5-RQnrMvWPmJ3xlXoYzMxjlDJa1ySJC1Tyj1tYaz60fKDxE_YTEbS74seQDVIeVlJA5Pa3WQ56Ut7n6Yx-0fAkMfpSrV9s3B7SgFAo-7kBIOVdJ18rYDSRWc4WdUQF_n7u_JJ9CtjR5drusjTdDVBL6lkLq-t2CbNj6D7FE-zLCKDIpN9b0V_X6Sdyl7YfmSgcZgH1wwpI-1IRXbqMnPTaLr3eMFtZfIS3s-PNIFm8pNjIDS2ZgxLPmkDH_bmmzzUDm4lRG5BOmX_ibh2szC58Sbx9ESyUnvLPeRx_f3qQgZGKV0Luj4=w1696-h1146-no)
+![enter image description here](https://github.com/jplineb/ColorbrandsProj/blob/master/Documentation/photos/Screenshot%20from%202019-08-12%2015-25-57.png?raw=true)
 
 If for some reason you need to connect to Wifi while using the Nano, click the **Wifi signal symbol** in the top right and change the appropriate settings.
 
@@ -41,7 +41,7 @@ Another *Mandatory* step we must take is to put the Nano in its maximum usage mo
 
 To put the processor at its maximum clock speed, either search for the terminal window shortcut by pressing the **Windows Key** on the Logitech keyboard or select the **Terminal Shortcut** on the **Task Bar** like shown below:
 
-![enter image description here](https://lh3.googleusercontent.com/hyTA2sUXcLDzfFHZ1gtzREG1LBHi4cpP3gl0CTSwPk6dF0muY5hs4nSw1KaMYL2yWM83DPTLkqwxJpsTDM84SSOSjRSmZWP49dah8IFbgF4dTqckuo-kN4-LRHYNAGzhqB5gebQ7AXKeQqqEOY4iv-rdmCuJPmOP4bVLof7M_KqKwkQnUbaSn4MOhK7pO-sHAZDAgyQwdRj2mNpuZbolxCnlZ5iYmJ89G2i7net2xhdOFDOoiOxkzaCfWRfG5f-cXri-Vpzt2eI380gkJaRR-tCyB8shFIj7PKcKhsXJLLjEo1UtjgV9zQonnVgLEbkAsWQXlXnI7r2E9jV1TyBN-Bvu4JPFTbE8rVBVrwwKUxryOdnlL9mP38YZCeCzn5WQogEbmywoWXaYG8Lk-DaSDOCQbv0yegmVo5A2Gk-vnKWNiE3YHiD-Ygmx2IMD86xeGFsXc6Gd9pjbAMFOTv0oBwQQcXvobCN9_hI2omuzvwPj80M5-ZMr9Y5ua9c23Mq1NlJ5gRPMdzcI1kHcpRaUcL3GlkoYhWiZTDJFeKJTykBie-ZXWzLBNzx1OTQSf1Hpo5JeyyFnhqiEwXNyU6WZM0R-UgKVfx3PeEKWumBKcRWPGbuLqQ-w5iWFyC0Vg321HQdwxp6fjFNfhezoVdKY3OV3-8Ae2zQ=w132-h124-no)
+![enter image description here](https://github.com/jplineb/ColorbrandsProj/blob/master/Documentation/photos/Screenshot%20from%202019-08-12%2015-38-08.png?raw=true)
 
 With the Terminal open type the following and press **Enter**:
 
