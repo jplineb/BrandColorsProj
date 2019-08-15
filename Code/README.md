@@ -183,4 +183,5 @@ An OpenCV window should appear in 15-30 seconds with the Broadcasted vs Correcte
 To exit the demo, press **Ctrl + C** at any time. 
 
 Last updated: August 15, 2019
+
 Author: John Paul Lineberger (jplineb@clemson.edu)
