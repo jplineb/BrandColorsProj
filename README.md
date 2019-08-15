@@ -91,7 +91,7 @@ The code can be broken down into four separate sections with all containing depe
 
 ## Acknowledgments
 
--Dr.Hudson for supervising the project
+-Dr. Dane Smith for supervising the project
 
 -Erica Walker for providing the source material
 
