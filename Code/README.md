@@ -52,7 +52,7 @@ To verify that the previous command worked, we can use a program called jtop. To
     Sudo jtop
 If done correctly the terminal should now look like the image below and if done correctly the frequency readings for each core should be *1.4GHz*
 
-![enter image description here](https://lh3.googleusercontent.com/RK13oWmw0EqDwwnYWCFRoEjx43Pf7JlYvYR3M-e7hjo1b6AL9KiZ7A5uE7IqhCHH-UPJQtwtRBCjhvp_MlTXNSWr3gM-AVAevYfW2UWFfjW72JmBvQ0ioveWJ94MYNAODgVYOZ7hXQZ9ZBfC7lO9JQ-ycERwZd63R2nFiF274gT-izpLy78G3ETzrfKHic6qzhh2pwlFecWI7BSvBHUlWx03onfRXiWGgmycwt2ob3fph3A8RUsRshYfmGG3lZpfRgSYpCk5Z6ojvrj9m7s-fBCl0psBTMV9Unhxj_L1Hj7fl926d4aXf5nIf-wcgMPf3vnWTdxOD6gSP7QBGGdJGBrGdS_h9HjgHq5BrOUgi69RlbdI2EwmoDodpCEsRDYG4SzquhlbNSCZO76RQdWVii2bboODpy2lAcURtSDjRbfQziR53KWjfIJY9Bw02SgTOA7BM0tIh1PkrX6XTm9WWIydE3H9xzu1pZlAPwZH_f75xa_Sn0Xs2fZWUFlVGIwq_LjWlStyI2YLLwNGoY0-U_d11emso9zBR4rF4tEt2yH8ou28akkdr1cBGxOHQCiYRqI6Pj2AX8z5FYNBlzt0uoiLgSEYbWjESLuhJ-F4GkqIdxNjM2UWqRZAz_Xmp8uL7ZZpdsgQk-NO7xx-S3BVlicuZw7MVU4=w1456-h918-no)
+![enter image description here](https://github.com/jplineb/ColorbrandsProj/blob/master/Documentation/photos/Screenshot%20from%202019-08-12%2015-47-58.png?raw=true)
 
 jtop shows us useful information for looking at the performance of the Nano such as memory usage, power consumption, cpu and gpu load. You can choose to leave this open during the demo or close it by pressing **Q** on the keyboard.
 
@@ -78,7 +78,7 @@ To see if you are in the correct directory enter the following into the Terminal
     ls
 The following should appear:
 
-![enter image description here](https://lh3.googleusercontent.com/eD2sYX5qMRzeLHN1iXKqYeEm3pgBWYn46SPJjqQ0wO5LlMHtolykrBGkaQD7QHhV1Fv_kqOnEfoPx_1Lb-s1XYTC_1VsczRbPCuzdUsYe3e1ue4I_QvSmxuVK5Ip1qQY7dFXVtEuh42If6QQl09cZgMZZc4llTvYwZ8eWMCrqybvxXBFTE8ZsHfpNPQUvkvz37Lpr-R7kXYhnc-NDYQxamF83Ez-BM1M4lejSyP2ntFIZc07FUM1jiU9dPxSLbsT-wYAyun4L3nKwV2UL00-ThPMIKDAnXxj9t-H2QbDZhJYHL7W_DmVmegGkbvOM6kjFw3acKWFbPgJfkNVpPPro5GrZRYwzvrqHzJo68VYsCz_k40d-xZYXbUcliDX6slHw4FYxmHJuW4k_EjwVyA3SBzRuHbXF7gKE7rZ12USh0ZJ4tAyJvJkzfIBjxcqTnHDSnVxSM5agYhCxbvvGBQUzfJkl0BTX-MSNrKc9ThCmgYgSaFn-siIn4taDTWM7KH3xXRQ2X_hrYGygTa5G1pE6w_gwJNjSM47xy0bR7rZtojRv6SvJ9tnvL5Tq5NIWSATz60M5earbzgkRdNSBUq2tk_7L5Hs1nn4ZL3SZdCGoIo70OC1wH3tyXXceIYsNenpwzFMK3XFm49lZDJrIp4zKS7OHZasPfQ=w1462-h916-no)
+![enter image description here](https://github.com/jplineb/ColorbrandsProj/blob/master/Documentation/photos/Screenshot%20from%202019-08-12%2016-12-52.png?raw=true)
 *If this did not work type **exit** into the Terminal and press **Enter**. Then, open a new Terminal Window and try again.*
 
 ## Running Different Demos
@@ -111,12 +111,12 @@ In the Terminal, with the Code directory selected, use the following code to run
 
 When the code starts you will get a file selection box like shown below. Here you can select the footage that you want the demo to run on:
 
-![enter image description here](https://lh3.googleusercontent.com/vA-dzJuEdoOaWv4N2Iuqm1yEjBXtXTd_KizNPFsmy-AGpjaLhLIMaWroi2LcwK-RkObMKcLNBGpLFtg1cKFsh51eszQbGtJr1B3Ndj0vo956EwNaNf1OF-2OEmldXTt2t_SZvuTfsHkcdtYIBj3fAvshKVfQxUAVgZ_j2aiSEIt_YmxioXxVxu-VnY7lQ8_oiZuDeJ29cohrXRqUzRaY4N552PGTpXuweXuS8NyBoWhTa0t6gtbGxF0ZLCkm76FQMZ8ItgB1JCaV8IxbQlbIO2rMUjA03avXHBwC87niQVugzoyaaMM_UFgUyiD20Gj8X56WW88zhWY52b-r1_6pfYbDZnsf6t61cuZhTLK96gQM-z-fQTLo_FqFMImzTExJhx1nRUB53pz_k9ztlQN2rSZyorr5MHYv9mMa9v3WOJevmBLqVahZEdFUnzZYTrbPnaRQge5b29l6Ryp_1X1GbZJuCURcHjF4YYG1VJjE8ewdsKjt1_HB674JJTylx8i4NoajyoLTQc0tVT7HGYsheaFMZOihUw9k-dYGOH4UQ_HzJIqB7JGSJ4ouLsAhIBDgyQfWUJCR8f1jFpdpxqkT0y1bLqWsuftKZ1oKJtHdOSESk2GUlmwxdbcX429Hw4Z6_54Y-Uq7OCsLMnGdJTXMP0hBwfYp-Bs=w478-h220-no)
+![enter image description here](https://github.com/jplineb/ColorbrandsProj/blob/master/Documentation/photos/Screenshot%20from%202019-08-13%2010-26-49.png?raw=true)
 
 
 Once you have selected the footage, OpenCV will run a test capture to and output the resolution into the Terminal like shown below:
 
-![enter image description here](https://lh3.googleusercontent.com/J8qlK0OIOSLb6PMq2_l80ULd-0H6TGBbdUzqNOwsmn02XplqOLNnzNAL8k75yZo9iRjJqMT8-eBLRP1jmg9iB9s78QGZYzDCqScYsDl3A8wvHWbx0aP6XxQONc1gwM7s1pPWpMtjHUBc3RBr3E-skndaSrmqfkMzfBV3jtCVqUjurwLnUUCEZbEbZ7wIc8hvHSsRmXZyAb03ePTWFe6SWgZDKVNJTOXzKQEf8MIgix1v2Hb3qgrK1iq7xfip1ljht_3ZLarLsi7BngQkDFcNu0m53X1AwrXrtOwx5eg5_aVbsKlXmrpPXP6CweQFwn-NoNgE0_QTuXo6j8lZaxoCUk0MHyDzdyvxXwmImd7aFWEmEOcml8cDXh-XHY_MDBmfuoEcHM0jCFftd7U68HC7TaabcqjulDJKriyK9djG1rAprSocuAZ27KJwviPT0dQGY3kMgLTYDnqYBoMqc7gSY3zaw5qgpkjgdbZGRupn9JKAQWG1OFDoRmQsPQ7W3kXX3qMhzQGhRZXI5O4uHD2TRU8emQADmGEjArr3pCE4hAaoujUo0_DnmTe7eP5WAD7HJ5Es3Aj70Jr5BNdlMVhB34KiRnQv_A3VYntiogb3funA76ZjlyzKjNt18G4Qu5-O9M-Y_inm9R87caG3TTYINfrmtNGLohU=w1826-h142-no)
+![enter image description here](https://github.com/jplineb/ColorbrandsProj/blob/master/Documentation/photos/Screenshot%20from%202019-08-13%2010-38-00.png?raw=true)
 
 
 ***Note***: If the resolution outputed by the Terminal is not correct, press **Ctrl + C** until the demo has stopped and try again
@@ -143,11 +143,11 @@ In the Terminal, with the Code directory selected, use the following code to run
 
 When the code starts you will get a file selection box like shown below. Here you can select the footage that you want the demo to run on:
 
-![enter image description here](https://lh3.googleusercontent.com/vA-dzJuEdoOaWv4N2Iuqm1yEjBXtXTd_KizNPFsmy-AGpjaLhLIMaWroi2LcwK-RkObMKcLNBGpLFtg1cKFsh51eszQbGtJr1B3Ndj0vo956EwNaNf1OF-2OEmldXTt2t_SZvuTfsHkcdtYIBj3fAvshKVfQxUAVgZ_j2aiSEIt_YmxioXxVxu-VnY7lQ8_oiZuDeJ29cohrXRqUzRaY4N552PGTpXuweXuS8NyBoWhTa0t6gtbGxF0ZLCkm76FQMZ8ItgB1JCaV8IxbQlbIO2rMUjA03avXHBwC87niQVugzoyaaMM_UFgUyiD20Gj8X56WW88zhWY52b-r1_6pfYbDZnsf6t61cuZhTLK96gQM-z-fQTLo_FqFMImzTExJhx1nRUB53pz_k9ztlQN2rSZyorr5MHYv9mMa9v3WOJevmBLqVahZEdFUnzZYTrbPnaRQge5b29l6Ryp_1X1GbZJuCURcHjF4YYG1VJjE8ewdsKjt1_HB674JJTylx8i4NoajyoLTQc0tVT7HGYsheaFMZOihUw9k-dYGOH4UQ_HzJIqB7JGSJ4ouLsAhIBDgyQfWUJCR8f1jFpdpxqkT0y1bLqWsuftKZ1oKJtHdOSESk2GUlmwxdbcX429Hw4Z6_54Y-Uq7OCsLMnGdJTXMP0hBwfYp-Bs=w478-h220-no)
+![enter image description here](https://github.com/jplineb/ColorbrandsProj/blob/master/Documentation/photos/Screenshot%20from%202019-08-13%2010-26-49.png?raw=true)
 
 Once you have selected the footage, OpenCV will run a test capture to and output the resolution into the Terminal like shown below:
 
-![enter image description here](https://lh3.googleusercontent.com/J8qlK0OIOSLb6PMq2_l80ULd-0H6TGBbdUzqNOwsmn02XplqOLNnzNAL8k75yZo9iRjJqMT8-eBLRP1jmg9iB9s78QGZYzDCqScYsDl3A8wvHWbx0aP6XxQONc1gwM7s1pPWpMtjHUBc3RBr3E-skndaSrmqfkMzfBV3jtCVqUjurwLnUUCEZbEbZ7wIc8hvHSsRmXZyAb03ePTWFe6SWgZDKVNJTOXzKQEf8MIgix1v2Hb3qgrK1iq7xfip1ljht_3ZLarLsi7BngQkDFcNu0m53X1AwrXrtOwx5eg5_aVbsKlXmrpPXP6CweQFwn-NoNgE0_QTuXo6j8lZaxoCUk0MHyDzdyvxXwmImd7aFWEmEOcml8cDXh-XHY_MDBmfuoEcHM0jCFftd7U68HC7TaabcqjulDJKriyK9djG1rAprSocuAZ27KJwviPT0dQGY3kMgLTYDnqYBoMqc7gSY3zaw5qgpkjgdbZGRupn9JKAQWG1OFDoRmQsPQ7W3kXX3qMhzQGhRZXI5O4uHD2TRU8emQADmGEjArr3pCE4hAaoujUo0_DnmTe7eP5WAD7HJ5Es3Aj70Jr5BNdlMVhB34KiRnQv_A3VYntiogb3funA76ZjlyzKjNt18G4Qu5-O9M-Y_inm9R87caG3TTYINfrmtNGLohU=w1826-h142-no)
+![enter image description here](https://github.com/jplineb/ColorbrandsProj/blob/master/Documentation/photos/Screenshot%20from%202019-08-13%2010-38-00.png?raw=true)
 
 
 ***Note***: If the resolution outputed by the Terminal is not correct, press **Ctrl + C** until the demo has stopped and try again
@@ -159,7 +159,7 @@ Do not panic, this is a bug with one of the python libraries we are using. This 
 
 An OpenCV window should appear and look like the following:
 
-![enter image description here](https://lh3.googleusercontent.com/EqtT3fZFt6SzLy-KXcukozXzAqxlXxGG2QXAGT6aRhMtwHK8RL_2CUeG6IiRJpIVfyCS3dCnTvKYqOvA0B45w-4OU99BaecUMRHuqkxdpAP6mNtKb01mqgsbrHVhIvV4FS8naGxxaDCMjksiaX7npfTY57ttwWxkLn08_VlvSQKRK129rN2HYCRGi8b9NPXYlIMqaCQtRaeCFM9MdHFMHDF50ERw3ZBBeAfh15PaJkMRDcxJ1KtdxJT4NVkX7MT18J_1TiCKPFZtcIfj8CnHvGpZXE9WegTzRJfjpL6yiipJgZgR35uxed6vPjAITfyqUW8AVChzrKfd8vbRLXNA164zmoKEKsj8akjC8vsLqDHFb3Da88SnIVLdhuE6-9BzPQLwgQwONAKtYc2uoCxKnXs-mIgbUHPQMD_da3uB6LX4dNqZWUUeyGOLgFWj-fgpPwYMx0yqqG5jZWzSj0ZecO9Q7D8lMlr-YPuLndTDh50q3bS1f0sAcb0EM-Qt2ikHTCn55EOntxWVEVBPsj_s5JQhDsdhP7NtP9sQFt1p2K-IIm_bBFUZbZgDG2mcWsw027xKUyL3kFSMKwWrnifMMVv0-1ccrkQ7ctrS_z-DmXcupY4RlH4MPsbaLaVX1wVT3wz6t47HY9vX9ccQd6Ey4GwXvDzbqzY=w1272-h772-no)
+![enter image description here](https://github.com/jplineb/ColorbrandsProj/blob/master/Documentation/photos/Screenshot%20from%202019-08-13%2011-12-49.png?raw=true)
 
 As shown above the GUI interface contains two sliders: **Intensity** and **Demoslider**. The default value for the **Intensity** slider if 43 (which represents an intensity multiplication of .43). This value, however, we have subjectively chosen and may need changing from scene to scene. The **Demoslider** will change the position of the line that separates the Broadcasted from the Corrected outputs.
 
