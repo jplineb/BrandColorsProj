@@ -4,7 +4,7 @@
 ## Sections
 
  1. Jetson Nano Startup
- 2. Navigating to the file location
+ 2. Navigating to the project directory
  3. Running different demos
 	 * Basic Predictions Demo (Best FPS)
 	 * GUI Demo with sliders
@@ -12,9 +12,9 @@
 
 
 ## Jetson Nano Startup
-The Jetson Nano has a few external peripherials that you must check before turning it on: 
+The Jetson Nano has a few external peripherals that you must check before turning it on: 
 + The prototype's external 500GB Samsung SSD that *has* to be plugged into a USB port. This external drive is for the Nano's swap file.
-+ The logitech wireless dongle for the wireless keyboard
++ The Logitech wireless dongle for the wireless keyboard
 + An external display. There are two ports for this, you can either use an HDMI cable or Display Port
 + A Webcam if necessary
 +  The 20A power supply so that the Nano can receive power
@@ -37,9 +37,9 @@ From here select **Displays** under the Hardware section and change the **Scale 
 
 If for some reason you need to connect to Wifi while using the Nano, click the **Wifi signal symbol** in the top right and change the appropriate settings.
 
-Another *Mandatory* step we must take is to put the Nano in its maximum usage mode. Normally when you start up the Nano, it is in an eco-power state that change the the clock frequency of the processor depending on the load of the system. The current version of JETPack tends to be hyperactive in changing the clock speed. For this project we want to make sure that the Nano is at maximum usability at all times.
+Another *Mandatory* step we must take is to put the Nano in its maximum usage mode. Normally when you start up the Nano, it is in an eco-power state that varies the the clock speed of the processor depending on the load of the system. The current version of JETPack tends to be hyperactive in changing the clock speed. For this project we want to make sure that the Nano is at maximum usability at all times.
 
-To put the processor at its maximum clock speed, either search for the terminal window shortcut by pressing the **Windows Key** on the logitech keyboard or select the **Terminal Shortcut** on the **Task Bar** like shown below:
+To put the processor at its maximum clock speed, either search for the terminal window shortcut by pressing the **Windows Key** on the Logitech keyboard or select the **Terminal Shortcut** on the **Task Bar** like shown below:
 
 ![enter image description here](https://lh3.googleusercontent.com/hyTA2sUXcLDzfFHZ1gtzREG1LBHi4cpP3gl0CTSwPk6dF0muY5hs4nSw1KaMYL2yWM83DPTLkqwxJpsTDM84SSOSjRSmZWP49dah8IFbgF4dTqckuo-kN4-LRHYNAGzhqB5gebQ7AXKeQqqEOY4iv-rdmCuJPmOP4bVLof7M_KqKwkQnUbaSn4MOhK7pO-sHAZDAgyQwdRj2mNpuZbolxCnlZ5iYmJ89G2i7net2xhdOFDOoiOxkzaCfWRfG5f-cXri-Vpzt2eI380gkJaRR-tCyB8shFIj7PKcKhsXJLLjEo1UtjgV9zQonnVgLEbkAsWQXlXnI7r2E9jV1TyBN-Bvu4JPFTbE8rVBVrwwKUxryOdnlL9mP38YZCeCzn5WQogEbmywoWXaYG8Lk-DaSDOCQbv0yegmVo5A2Gk-vnKWNiE3YHiD-Ygmx2IMD86xeGFsXc6Gd9pjbAMFOTv0oBwQQcXvobCN9_hI2omuzvwPj80M5-ZMr9Y5ua9c23Mq1NlJ5gRPMdzcI1kHcpRaUcL3GlkoYhWiZTDJFeKJTykBie-ZXWzLBNzx1OTQSf1Hpo5JeyyFnhqiEwXNyU6WZM0R-UgKVfx3PeEKWumBKcRWPGbuLqQ-w5iWFyC0Vg321HQdwxp6fjFNfhezoVdKY3OV3-8Ae2zQ=w132-h124-no)
 
@@ -58,9 +58,9 @@ jtop shows us useful information for looking at the performance of the Nano such
 
 The Nano is now ready for whatever you throw at it!
 
-## Navigating to the file location
+## Navigating to the project directory
 
-The resources for this project is located in a folder named **BrandColorsProj** To view this directory with a file explorer, click the **Files** Shortcut located on the taskbar and select the **BrandColorsProj** folder. This folder contains 3 sub folders named:
+The resources for this project are located in a folder named **BrandColorsProj** To view this directory with a file explorer, click the **Files** Shortcut located on the taskbar and select the **BrandColorsProj** folder. This folder contains 3 sub folders named:
 * Code
 * Data
 * Models
@@ -97,7 +97,7 @@ Each of these demos has arguments you can pass with them to modify the demo:
 
 ***Note***: You will most likely use --demo when showing the demo off as it provides the side by side comparison in the output window
 
-If you haven't done so already, fufr footage in the **BrandColorsProj/Code/** directory. If you don't have footage on hand use Demo_Clip_720p_30.m
+If you haven't done so already, put demo footage in the **BrandColorsProj/Code/** directory. If you don't have footage on hand use Demo_Clip_720p_30.mp4
 
 ### Basic Predictions Demo
 The Normal Predictions Demo is the fastest of demos when it comes to frame rate as it is only rendering the video and the demo overlay. However, it is not as smooth as the gui demo due to data being exchange between the onboard RAM and the swap file on the USB SSD.  You will notices a slight hang when this occurs. This is solely a limitation of the hardware.
@@ -163,9 +163,11 @@ An OpenCV window should appear and look like the following:
 
 As shown above the GUI interface contains two sliders: **Intensity** and **Demoslider**. The default value for the **Intensity** slider if 43 (which represents an intensity multiplication of .43). This value, however, we have subjectively chosen and may need changing from scene to scene. The **Demoslider** will change the position of the line that separates the Broadcasted from the Corrected outputs.
 
+This demo has a ***scalable window*** which allows you to resize the demo window to desired size. This will take a hit on performance by 1-4fps.
+
 ### Webcam Demo
 
-The Webcam Demo is a great way to concretely show how that the color correction is in fact happening in real time. However it has a few downsides as of August 13, 2019. The first is that the white balance for the webcam can not be locked, the webcam will change it depending on the scene. This is a limitation of the camera and OpenCV. The second is variability. Currently, the device might change usb ids on the Nano which means you must go in and change parameters in the code for OpenCV to recognize the camera. I plan to fix this is future releases if we get a more usable webcam.
+The Webcam Demo is a great way to concretely show that the color correction is in fact happening in real time. However it has a few downsides as of August 13, 2019. The first is that the white balance for the webcam can not be locked, the webcam will change it depending on the scene. This is a limitation of the camera and OpenCV. The second is variability. Currently, the device might change usb ids on the Nano which means you must go in and change parameters in the code for OpenCV to recognize the camera. I plan to fix this is future releases if we get a more usable webcam.
 
 To run the Webcam Demo, follow these steps:
 
@@ -180,4 +182,5 @@ An OpenCV window should appear in 15-30 seconds with the Broadcasted vs Correcte
 
 To exit the demo, press **Ctrl + C** at any time. 
 
-
+Last updated: August 15, 2019
+Author: John Paul Lineberger (jplineb@clemson.edu)
