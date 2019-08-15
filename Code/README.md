@@ -1,4 +1,4 @@
-﻿
+
 # Using the color corrector code
 
 ## Sections
@@ -23,7 +23,7 @@ To power on the Nano just plug in the powersupply to an wall outlet and it will 
 
 Once the Nano is running, a desktop will be shown like below:
 
-![Jetson Nano Desktop](https://lh3.googleusercontent.com/yEbF0mZLuDTrbvdGYgd3xmF2AjGdp4KTSEwSWvXN_I19uiHIr3Q34v7Xn5RsWh1yiYefUU_IbCLf-AWxfN1TZT8ioR_wkcuLooZAlJ2b7iP_RKFpbcKlJ8wYOn9k34UacSZXbs_BFL6RjQSeO1UBZxtxQfg9milGf4iR0jK-Kou_0DLR7ltmsf_u4hUdk4lZSzDUUJKD3tvWR4FOHz0ghyBGJWC68xihuDafy2JtuelqUT2CdqK7bzfFZKWrX5DyRqa8T9BZ95zA1aiSe2qqHQvAsiTeX7z6hLd3wPWdOW-PBJ9KkY6uuZ6-d1BfdM2GU8MS1c9_jwSUfY-F0PII3M0q5c_5jDZliMn4sgnkbAdE_HMMGVC4ZPbiXAtFGKWoNZF5UjZ7bthSSO_k3zYT6mcIlMIkafDbEsMAntHBRx4kdXbfSWwwdKSk2ZO4IRWXQthyxf6bKP2Jfp-p4G99OR8Sib31_n1W3XCkFC9aN_ci7re0vfPE3qoszJQ6581x7UsZa7nyi689e1XIvyWemQRA7yAEdcYaWiDx9Ssv9rLYErR_y5r07afCwkqnJwVrcZ7p-lW3HnnNNhS-9xVGp2HrwSXNLwEbldUVdMUtXfroWgx9pr0cFxrb2Aui1sa5y6_CFKHIlnJPmHMLabnhg-PzhKsByYU=w2838-h1598-no)
+![Jetson Nano Desktop](../Documentation/photos/Screenshot from 2019-08-12 15-11-25.png?raw=True "Title")
 
 From this, we can accesses the basic computer necessities. 
 
