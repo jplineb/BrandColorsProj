@@ -27,6 +27,7 @@ line_profiler
 numpy
 imutils
 psutils
+easygui
 TensorRT - only necessary if running TensorRT example
 Pycuda - only necessary if running TensorRT example
 ```
@@ -36,9 +37,9 @@ Pycuda - only necessary if running TensorRT example
 
 The code can be broken down into four separate sections with all containing dependencies on the last:
 1. Brand_Colors_Predictions - used to take video and color correct it in real time using pytorch
-   * Brand_Colors_Predictions.py
-   * Brand_Colors_Predictions_multithread.py
-   * Brand_Colors_Predictions_multithread_v2.py
+   * Predictions_Test.py
+   * Predictions_Test_gui.py
+   * Predictions_Test_webcam.py
    
 2. Brand_Colors_Predictions_TensorRT - used to take video and color correct it in real time using TensorRT
    * Brand_Colors_Predictions_TensorRT.py
@@ -49,6 +50,8 @@ The code can be broken down into four separate sections with all containing depe
 4. Multithreadimageload - contains the class definitions for the project
    * Multithreadimageload.py
 
+**For more infromation on using the code:**
+[Code Documentaiton](/Code/README.md)
 
 ### Brand_Colors_Predictions
 
@@ -93,7 +96,7 @@ The code can be broken down into four separate sections with all containing depe
 -Erica Walker for providing the source material
 
 ## Contributers
-- Dr.Hudson
+- Dr. Dane Smith
 - Michelle Mayer
 - John Paul Lineberger
 
