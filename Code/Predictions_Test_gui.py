@@ -67,8 +67,8 @@ vid.release()
 
 ##
 ## create the video and inference streams 
-fvs = FileVideoStream(video, queue_size=15).start()
-ivs = InferenceDataStream(fvs, model, queue_size=15, cpu=args.cpu).start()
+fvs = FileVideoStream(video, queue_size=30).start()
+ivs = InferenceDataStream(fvs, model, queue_size=30, cpu=args.cpu).start()
 
 
 ##
@@ -145,6 +145,7 @@ def livevideocorrection():
 			while True:
 				key2 = cv2.waitKey(1) or 0xff
 				cv2.imshow('preview',prediction)
+				cv2.putText(prediction, 'Paused',(20,70), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 4)
 				if key2 == ord('p'):
 					last_time = time.monotonic()
 					break
