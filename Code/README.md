@@ -97,7 +97,7 @@ Each of these demos has arguments you can pass with them to modify the demo:
 
 ***Note***: You will most likely use --demo when showing the demo off as it provides the side by side comparison in the output window
 
-If you haven't done so already, put demo footage in the **BrandColorsProj/Code/** directory. If you don't have footage on hand use Demo_Clip_720p_30.mp4
+If you haven't done so already, put demo footage in the **BrandColorsProj/Code/** directory. If you don't have footage on hand, use Cut_Down_Demo_720p.mp4
 
 ### Basic Predictions Demo
 The Normal Predictions Demo is the fastest of demos when it comes to frame rate as it is only rendering the video and the demo overlay. However, it is not as smooth as the gui demo due to data being exchange between the onboard RAM and the swap file on the USB SSD.  You will notices a slight hang when this occurs. This is solely a limitation of the hardware.
@@ -161,7 +161,7 @@ An OpenCV window should appear and look like the following:
 
 ![enter image description here](https://github.com/jplineb/ColorbrandsProj/blob/master/Documentation/photos/Screenshot%20from%202019-08-13%2011-12-49.png?raw=true)
 
-As shown above the GUI interface contains three sliders: **Intensity**,**Demoslider**,**Colorbox**. The default value for the **Intensity** slider if 43 (which represents an intensity multiplication of .43). This value, however, we have subjectively chosen and may need changing from scene to scene. The **Demoslider** will change the position of the line that separates the Broadcasted from the Corrected outputs. **Colorbox** is a switch that allows the user to turn on a color appropriate rectange on screen. Move the slider to a value of 1 for the colorbox to appear
+As shown above the GUI interface contains three sliders: **Intensity**, **Demoslider**, **Colorbox**. The default value for the **Intensity** slider if 43 (which represents an intensity multiplication of .43). This value, however, we have subjectively chosen and may need changing from scene to scene. The **Demoslider** will change the position of the line that separates the Broadcasted from the Corrected outputs. **Colorbox** is a switch that allows the user to turn on a color appropriate rectange on screen. Move the slider to a value of 1 for the colorbox to appear
 
 You can **Pause** this demo at any time. To do so, press **P** on your keyboard. When the demo is paused, ***Paused*** will appear in the upper left corner. To continue the demo, press **P** again.
 
