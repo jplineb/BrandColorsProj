@@ -15,12 +15,15 @@ from multithreadimageload import InferenceDataStream, ColorCorrector
 
 import psutil
 import easygui
+import os
+import time
 
 ## Define function for gui sliders
 def nothing(x):
 	pass
 
 
+	
 ##
 ## Read off arguments
 
@@ -67,6 +70,7 @@ vid.release()
 fvs = FileVideoStream(video, queue_size=15).start()
 ivs = InferenceDataStream(fvs, model, queue_size=15, cpu=args.cpu).start()
 
+
 ##
 ## set up the color corrector
 cc = ColorCorrector(model, intensity=0, cpu=args.cpu)
@@ -83,6 +87,8 @@ def livevideocorrection():
 	cv2.resizeWindow('preview', (1280, 720)) # resizes cv2 window entitiy called 'preview'
 	cv2.createTrackbar('Intensity', 'preview', 43,100, nothing)
 	cv2.createTrackbar('Demoslider', 'preview', width//2, width, nothing)
+	cv2.createTrackbar('Colorbox' , 'preview', 0,1,nothing)
+	
 	while ivs.more() and frame_number <= total_frames:
 		
 		#update intensity
@@ -94,6 +100,7 @@ def livevideocorrection():
 		cc.res_override = dslider
 		
 		# get corrected image
+		
 		prediction = (cc.predict(ivs.read(), frame_number, height, width, demo_mode = args.demo)*255).type(torch.uint8)
 		
 		
@@ -119,16 +126,30 @@ def livevideocorrection():
 		frame_number += 1
 
 		# update the display
-		#cv2.putText(prediction, "Queue Size (FVS/IVS): {}/{}".format(fvs.Q.qsize(), ivs.Q.qsize()),
-			#(10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
+		bslider = cv2.getTrackbarPos('Colorbox','preview')
 		cv2.putText(prediction, ('FPS: ' + str(FPS)),(width//2+20, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+		# place color correct rectangle
+		if bslider > 0:
+			cv2.line(prediction,(0,80),(width,80),(51,103,246),25)
 		
 		if args.demo:
 			cv2.line(prediction, (dslider ,0), (dslider, height), (255,255,255), 2)
 			cv2.putText(prediction, ('Broadcasted'), ((dslider)-200, height-50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
 			cv2.putText(prediction, ('Corrected'),((dslider+10),height-50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2)
+			
+		key = cv2.waitKey(1) & 0xff
+		
+		# Pause feature
+		
+		if key==ord('p'):
+			while True:
+				key2 = cv2.waitKey(1) or 0xff
+				cv2.imshow('preview',prediction)
+				if key2 == ord('p'):
+					last_time = time.monotonic()
+					break
+					
 		cv2.imshow('preview',prediction)
-		cv2.waitKey(1)
 
 		
 	# clean up the environment
