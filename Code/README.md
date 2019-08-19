@@ -161,7 +161,11 @@ An OpenCV window should appear and look like the following:
 
 ![enter image description here](https://github.com/jplineb/ColorbrandsProj/blob/master/Documentation/photos/Screenshot%20from%202019-08-13%2011-12-49.png?raw=true)
 
-As shown above the GUI interface contains two sliders: **Intensity** and **Demoslider**. The default value for the **Intensity** slider if 43 (which represents an intensity multiplication of .43). This value, however, we have subjectively chosen and may need changing from scene to scene. The **Demoslider** will change the position of the line that separates the Broadcasted from the Corrected outputs.
+As shown above the GUI interface contains three sliders: **Intensity**,**Demoslider**,**Colorbox**. The default value for the **Intensity** slider if 43 (which represents an intensity multiplication of .43). This value, however, we have subjectively chosen and may need changing from scene to scene. The **Demoslider** will change the position of the line that separates the Broadcasted from the Corrected outputs. **Colorbox** is a switch that allows the user to turn on a color appropriate rectange on screen. Move the slider to a value of 1 for the colorbox to appear
+
+You can **Pause** this demo at any time. To do so, press **P** on your keyboard. When the demo is paused, ***Paused*** will appear in the upper left corner. To continue the demo, press **P** again.
+
+***Note***: You can not adjust the other sliders when the demo is paused. 
 
 This demo has a ***scalable window*** which allows you to resize the demo window to desired size. This will take a hit on performance by 1-4fps.
 
