@@ -35,59 +35,10 @@ Pycuda - only necessary if running TensorRT example
 
 ## Running and Using the code
 
-The code can be broken down into four separate sections with all containing dependencies on the last:
-1. Brand_Colors_Predictions - used to take video and color correct it in real time using pytorch
-   * Predictions_Test.py
-   * Predictions_Test_gui.py
-   * Predictions_Test_webcam.py
-   
-2. Brand_Colors_Predictions_TensorRT - used to take video and color correct it in real time using TensorRT
-   * Brand_Colors_Predictions_TensorRT.py
-
-3. Brand_Colors_Predictions_webcam - used to take live webcam feed and color correct it in real time
-   * Brand_Colors_Predictions_webcam.py
-
-4. Multithreadimageload - contains the class definitions for the project
-   * Multithreadimageload.py
 
 **For more infromation on using the code:**
 [Code Documentaiton](/Code/README.md)
 
-### Brand_Colors_Predictions
-
-  
-**Outputs:** 
-
-**Error Handling**:
-
-**Notes**: 
-
-### Brand_Colors_Predictions_TensorRT
-
-  
-**Outputs:** 
-
-**Error Handling**:
-
-**Notes**: 
-
-### Brand_Colors_Predictions_webcam
-
-  
-**Outputs:** 
-
-**Error Handling**:
-
-**Notes**: 
-
-### Multithreadimageload
-
-  
-**Outputs:** 
-
-**Error Handling**:
-
-**Notes**: 
 
 ## Acknowledgments
 
